@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\SchoolController;
+use App\Http\Controllers\WorkerController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +18,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Auth::routes();
+
+Route::resource('schools', SchoolController::class);
+Route::resource('workers', WorkerController::class);
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
